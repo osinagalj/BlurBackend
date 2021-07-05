@@ -25,7 +25,7 @@ public class ProductController {
 	@Autowired
 	ProductService ps;
 
-	@PostMapping(path = "/productos")
+	@PostMapping(path = "/products")
 	public ResponseEntity<Product> registerPersona(@RequestBody Product p){
 		Product newP = ps.register(p);
 		URI location = ServletUriComponentsBuilder
@@ -36,13 +36,13 @@ public class ProductController {
 		return ResponseEntity.created(location).body(newP);
 	}	
 
-	@GetMapping(path = "/productos")
+	@GetMapping(path = "/products")
 	public ResponseEntity<List<Product>> getPersonas( ){
 		List<Product> list = ps.getAllPersonas();
 		return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping(path = "/productos/{name}/")
+	@GetMapping(path = "/products/{name}/")
 	public ResponseEntity<Product> getPersona(@PathVariable(value = "name") String name){
 		Product p = ps.findByName(name);		
 		return ResponseEntity.ok(p);

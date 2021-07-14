@@ -7,6 +7,8 @@ import java.util.List;
 public interface ProductService {
 	Product register(Product p);
 	Product findByName(String name);
-	List<Product> getAllPersonas();
+	Product findProductById(Long id);
+	List<Product> getAllProducts();
+	Boolean saveImage(byte[] img);
 
 }

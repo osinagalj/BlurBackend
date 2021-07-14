@@ -28,14 +28,36 @@ public class ProductServiceImp implements ProductService {
 		return pr.findByName(name);
 	}
 	
-	public List<Product> getAllPersonas(){
-		List<Product> personas = new ArrayList<Product>();
+	@Override
+	public Product findProductById(Long id) {
+		return pr.findProductById(id);
+	}
+	
+	@Override
+	public Boolean saveImage(byte[] img) {
 		Iterator<Product> it = pr.findAll().iterator();
 		while (it.hasNext()) {
 			Product product = it.next();
-			personas.add(product);
+			Product product2 = this.findByName(product.getName());
+			product2.setImage(img);
+			product2.setName("tu papa");
+			this.register(product2);
+			//pr.findProductById(id);
 		}
-		return personas;
+		
+		return true;
+	}
+	
+	 
+	
+	public List<Product> getAllProducts(){
+		List<Product> products = new ArrayList<Product>();
+		Iterator<Product> it = pr.findAll().iterator();
+		while (it.hasNext()) {
+			Product product = it.next();
+			products.add(product);
+		}
+		return products;
 	}
 
 }

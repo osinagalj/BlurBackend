@@ -1,16 +1,23 @@
 package com.tandil.blur.persistence.model;
 
-import java.nio.file.Files;
+import java.nio.file.Files; 
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
 
 @Entity 
 @Table(name="Product")
@@ -30,19 +37,47 @@ public class Product {
 	@Column(name = "description", nullable = true)
 	private String description;
 	
+
+
+//
+//    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+//    @PrimaryKeyJoinColumn
+//    private Image image;
+    
+	@Column(name = "imagen78", nullable = true)
+	private String categoria;
+	
+	
+	
 //	@Column(name = "rating", nullable = true)
 //	private float rating;
 //	
 //	@Column(name = "colors", nullable = true)
 //	private List<String> colors;
 	
-	@Column(name = "specs", nullable = false)
+
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+//	public Image getImage() {
+//		return image;
+//	}
+//
+//	public void setImage(Image image) {
+//		this.image = image;
+//	}
+
+	@Column(name = "specs", nullable = true)
 	private String specs; //especificaciones
 	
-    @Lob
-    @Column(name = "Image")
-    private byte[] image;
-    
+
+
     //private List<Product>
 
 //	@ManyToOne //The Many refers to Cow and the One to Herd
@@ -50,14 +85,6 @@ public class Product {
 //	private Herd herd;	
 	
 	
-	
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
 
 	public String getName() {
 		return name;

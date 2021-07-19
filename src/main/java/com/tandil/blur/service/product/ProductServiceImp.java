@@ -9,14 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tandil.blur.persistence.model.Product;
+import com.tandil.blur.persistence.repository.ImageRepository;
 import com.tandil.blur.persistence.repository.ProductRepository;
+import com.tandil.blur.service.image.ImageService;
 
 @Service
 public class ProductServiceImp implements ProductService {
 	
 	@Autowired
 	ProductRepository pr;
+	
+	@Autowired
+	ImageService ir;
 
+	
+	public void remove(Long id) {
+		Product p = pr.findProductById(id);
+		ir.deleteAllImagesOfProduct(p.getId());
+		 pr.deleteById(id);
+	}
 	
 	@Override
 	public Product register(Product p) {
@@ -38,10 +49,7 @@ public class ProductServiceImp implements ProductService {
 		Iterator<Product> it = pr.findAll().iterator();
 		while (it.hasNext()) {
 			Product product = it.next();
-			Product product2 = this.findByName(product.getName());
-			product2.setImage(img);
-			product2.setName("tu papa");
-			this.register(product2);
+			this.register(product);
 			//pr.findProductById(id);
 		}
 		

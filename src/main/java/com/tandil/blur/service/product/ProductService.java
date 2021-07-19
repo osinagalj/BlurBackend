@@ -10,5 +10,6 @@ public interface ProductService {
 	Product findProductById(Long id);
 	List<Product> getAllProducts();
 	Boolean saveImage(byte[] img);
-
+	
+	void remove(Long id);
 }

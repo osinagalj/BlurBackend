@@ -1,58 +1,46 @@
-package com.tandil.blur.api.inputs;
+package com.tandil.blur.api.outputs;
 
-import com.tandil.blur.persistence.model.Image;
 
-public class ProductInput {
-	
-    private String name;
+public class ProductOutput {
+
+	private Long id;
+
+	private String name;
 	private float price;
 	private String description;
-	private String categoria;
-	private ImageInput image;
+	private ImageOutput image;
 	
-
-	public String getCategoria() {
-		return categoria;
+	
+	
+    public Long getId() {
+		return id;
 	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public float getPrice() {
 		return price;
 	}
-
 	public void setPrice(float price) {
 		this.price = price;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public ImageInput getImage() {
+	public ImageOutput getImage() {
 		return image;
 	}
-
-	public void setImage(ImageInput image) {
+	public void setImage(ImageOutput image) {
 		this.image = image;
 	}
 
-
-
-
 }
-
